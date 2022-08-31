@@ -1,10 +1,11 @@
 import Avatar from "../Avatar/Avatar";
+import styles from "./User.module.css";
 
 export default function User(props) {
   return (
-    <div>
-      <Avatar src={props.src}></Avatar>
-      <span>{props.username}</span>
+    <div className={styles["user-container"]}>
+      <Avatar src={props.user.src}></Avatar>
+      <span className={styles.username}>{props.user.username}</span>
     </div>
   );
 }
