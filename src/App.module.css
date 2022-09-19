@@ -8,5 +8,11 @@ body{
     width: 100%;
     display: grid;
     margin-top: min(10%, 50px);
-    grid-template-columns: 1fr clamp(250px, 50% ,1250px) 1fr;
+    grid-template-columns: 1fr clamp(330px, 50% ,1250px) 1fr;
+}
+
+.main-container{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
 }

@@ -1,0 +1,23 @@
+import styles from "./Comment.module.css";
+import Score from "./../Score/Score";
+import Reply from "./../Reply/Reply";
+import User from "./../User/User";
+
+export function Comment(props) {
+  return (
+    <div className={`${styles.bubble} ${styles.className}`}>
+      <Score className={styles.score} score={props.score}></Score>
+      <User username={props.username} src={props.src}></User>
+      <div className={styles.text}>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+        commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+        velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+        occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+        mollit anim id est laborum.
+      </div>
+      <Reply className={styles.reply}></Reply>
+    </div>
+  );
+}

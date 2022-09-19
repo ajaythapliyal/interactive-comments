@@ -3,7 +3,7 @@ import styles from "./Reply.module.css";
 
 export default function Reply(props) {
   return (
-    <div>
+    <div className={props.className}>
       <ReplySVG></ReplySVG>
       <span className={styles.title}>Reply</span>
     </div>
