@@ -4,13 +4,27 @@ import { ReactComponent as Plus } from "./../../assets/images/icon-plus.svg";
 
 export default function Score(props) {
   return (
-    <div className={`${styles["score-container"]} ${props.className}`}>
+    <span
+      className={`${styles["score-container"]} ${props.className} ${
+        props.horizontal
+          ? styles["horizontal-container"]
+          : styles["vertical-container"]
+      }`}
+    >
       <Plus onClick={props.increment} className={styles["score-action"]}></Plus>
-      <p className={styles.score}>{props.score}</p>
+      <span
+        className={`${styles.score} ${
+          props.horizontal
+            ? styles["horizontal-score"]
+            : styles["vertical-score"]
+        }`}
+      >
+        {props.score}
+      </span>
       <Minus
         onClick={props.decrement}
         className={styles["score-action"]}
       ></Minus>
-    </div>
+    </span>
   );
 }

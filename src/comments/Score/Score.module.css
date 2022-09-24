@@ -1,30 +1,39 @@
 .score-container{
-    height: 5em;
-    width: 2em;
     background-color:  hsl(239, 57%, 95%);
     border-radius: 5px;
-}
-
-.score-action{
-    position: relative;
-    left: 33%;
+    display: inline-flex;
 }
 
 .score-action > path:hover{
     fill: hsl(238, 40%, 52%);
 } 
 
-.plus{
-    margin-top: 0.4em;
-}
-
 .score{
     color: hsl(238, 40%, 52%);
     font-family: 'Rubik', sans-serif;
     font-size: 1em;
     font-weight: 500;
-    margin-top: 0.5em;
-    margin-bottom: 0.5em;
-    width: 100%;
     text-align: center;
+}
+
+.vertical-container{
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5em;
+}
+
+.vertical-score {
+    margin-block: 1em;
+}
+
+.horizontal-container{
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5em;
+}
+
+.horizontal-score{
+    margin-inline: 1em;
 }
