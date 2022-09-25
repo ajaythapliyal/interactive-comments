@@ -3,15 +3,19 @@ import { Comment } from "./comments/Comment/Comment";
 import data from "../src/mocks/data.json";
 
 function App() {
+  const { comments, currentUser } = data;
   return (
     <div className={styles["app-container"]}>
       <div></div>
       <main className={styles["main-container"]}>
-        <Comment
-          score={data.comments[0].score}
-          username={data.comments[0].user.username}
-          src={data.comments[0].user.image.png}
-        ></Comment>
+        {comments.map((comment) => (
+          <Comment
+            score={comment.score}
+            username={comment.user.username}
+            src={comment.user.image.png}
+            text={comment.content}
+          ></Comment>
+        ))}
       </main>
       <div></div>
     </div>
