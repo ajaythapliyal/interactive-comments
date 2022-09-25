@@ -7,7 +7,7 @@ import useMediaQuery from "../useMediaQuery";
 export function Comment(props) {
   const isMobile = useMediaQuery("(max-width: 500px)");
   return (
-    <>
+    <div className={styles["comment-section"]}>
       <div className={styles.bubble}>
         <Score
           className={styles.score}
@@ -28,6 +28,6 @@ export function Comment(props) {
           replies={reply.replies}
         ></Comment>
       ))}
-    </>
+    </div>
   );
 }
