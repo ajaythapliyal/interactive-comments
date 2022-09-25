@@ -42,5 +42,6 @@
 
     .score, .reply{
         grid-row-start: 3;
+        align-self: center;
     }
 }
