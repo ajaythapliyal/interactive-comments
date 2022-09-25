@@ -8,7 +8,7 @@ export function Comment(props) {
   const isMobile = useMediaQuery("(max-width: 500px)");
 
   return (
-    <div className={`${styles.bubble} ${styles.className}`}>
+    <div className={styles.bubble}>
       <Score
         className={styles.score}
         score={props.score}

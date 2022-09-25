@@ -5,7 +5,9 @@ import { ReactComponent as Plus } from "./../../assets/images/icon-plus.svg";
 export default function Score(props) {
   return (
     <span
-      className={`${styles["score-container"]} ${props.className} ${
+      className={`${styles["score-container"]} ${
+        props.className ? props.className : ""
+      } ${
         props.horizontal
           ? styles["horizontal-container"]
           : styles["vertical-container"]
