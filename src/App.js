@@ -10,10 +10,12 @@ function App() {
       <main className={styles["main-container"]}>
         {comments.map((comment) => (
           <Comment
+            key={comment.id}
             score={comment.score}
             username={comment.user.username}
             src={comment.user.image.png}
             text={comment.content}
+            replies={comment.replies}
           ></Comment>
         ))}
       </main>
