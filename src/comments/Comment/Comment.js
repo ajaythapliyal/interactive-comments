@@ -13,6 +13,8 @@ export function Comment(props) {
           className={styles.score}
           score={props.score}
           horizontal={isMobile}
+          increment={() => props.increment(props.id)}
+          decrement={() => props.decrement(props.id)}
         ></Score>
         <User username={props.username} src={props.src}></User>
         <div className={styles.text}>{props.text}</div>
@@ -21,7 +23,10 @@ export function Comment(props) {
       {props.replies?.map((reply) => (
         <Comment
           key={reply.id}
+          id={reply.id}
           score={reply.score}
+          increment={props.increment}
+          decrement={props.decrement}
           username={reply.user.username}
           src={reply.user.image.png}
           text={reply.content}
