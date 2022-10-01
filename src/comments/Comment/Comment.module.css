@@ -45,3 +45,8 @@
         align-self: center;
     }
 }
+
+
+/*
+TODO : components should not decide its width based on its parent
+*/

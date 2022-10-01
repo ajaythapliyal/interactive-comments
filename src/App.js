@@ -3,6 +3,7 @@ import { Comment } from "./comments/Comment/Comment";
 import data from "../src/mocks/data.json";
 import { useState } from "react";
 import { findComment } from "./comments/util";
+import AddComment from "./comments/AddComment/AddComment";
 
 function App() {
   const [comments, setComments] = useState(data.comments);
@@ -36,6 +37,7 @@ function App() {
             replies={comment.replies}
           ></Comment>
         ))}
+        <AddComment></AddComment>
       </main>
       <div></div>
     </div>
