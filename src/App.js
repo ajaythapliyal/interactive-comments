@@ -21,6 +21,10 @@ function App() {
     setComments([...comments]);
   }
 
+  function onComment(comment) {
+    setComments([...comments, comment]);
+  }
+
   const loggedInUser = <User src={data.currentUser.image.png}></User>;
 
   return (
@@ -47,7 +51,7 @@ function App() {
             ></Comment>
           );
         })}
-        <AddComment user={loggedInUser}></AddComment>
+        <AddComment user={data.currentUser} onComment={onComment}></AddComment>
       </main>
       <div></div>
     </div>

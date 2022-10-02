@@ -4,7 +4,8 @@ export function findComment(comments, id) {
     if (comment.id === id) {
       return comment;
     } else if (comment.replies?.length) {
-      return findComment(comment.replies, id);
+      const result = findComment(comment.replies, id);
+      if (result) return result;
     }
   }
 }
