@@ -1,3 +1,5 @@
+import React from "react";
+
 export function findComment(comments, id) {
   for (let index = 0; index < comments.length; index++) {
     const comment = comments[index];
@@ -9,3 +11,5 @@ export function findComment(comments, id) {
     }
   }
 }
+
+export const UserContext = React.createContext();

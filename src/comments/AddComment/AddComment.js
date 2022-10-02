@@ -1,13 +1,15 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import User from "../User/User";
+import { UserContext } from "../util";
 import styles from "./AddComment.module.css";
 
-export default function AddComment({ user, replyTo, onComment }) {
+export default function AddComment({ replyTo, onComment }) {
   const [comment, setComment] = useState("");
+  const currentUser = useContext(UserContext);
 
   return (
     <div className={styles["comment-bubble"]}>
-      <User className={styles.user} src={user.image.png}></User>
+      <User className={styles.user} src={currentUser.image.png}></User>
       <textarea
         className={styles["input-box"]}
         placeholder="Add a comment..."
@@ -22,12 +24,7 @@ export default function AddComment({ user, replyTo, onComment }) {
             content: comment,
             createdAt: "now",
             score: 0,
-            user: {
-              image: {
-                png: "image-juliusomo.png",
-              },
-              username: "juliusomo",
-            },
+            user: currentUser,
             replies: [],
           });
           setComment("");

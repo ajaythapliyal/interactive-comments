@@ -1,8 +1,8 @@
 import styles from "./App.module.css";
 import { Comment } from "./comments/Comment/Comment";
 import data from "../src/mocks/data.json";
-import { useState } from "react";
-import { findComment } from "./comments/util";
+import React, { useState } from "react";
+import { findComment, UserContext } from "./comments/util";
 import AddComment from "./comments/AddComment/AddComment";
 import User from "./comments/User/User";
 
@@ -25,36 +25,28 @@ function App() {
     setComments([...comments, comment]);
   }
 
-  const loggedInUser = <User src={data.currentUser.image.png}></User>;
-
   return (
-    <div className={styles["app-container"]}>
-      <div></div>
-      <main className={styles["main-container"]}>
-        {comments.map((comment) => {
-          const user = (
-            <User
-              username={comment.user.username}
-              src={comment.user.image.png}
-            ></User>
-          );
-          return (
+    <UserContext.Provider value={data.currentUser}>
+      <div className={styles["app-container"]}>
+        <div></div>
+        <main className={styles["main-container"]}>
+          {comments.map((comment) => (
             <Comment
               key={comment.id}
               id={comment.id}
-              user={user}
+              user={comment.user}
               score={comment.score}
               increment={increment}
               decrement={decrement}
               text={comment.content}
               replies={comment.replies}
             ></Comment>
-          );
-        })}
-        <AddComment user={data.currentUser} onComment={onComment}></AddComment>
-      </main>
-      <div></div>
-    </div>
+          ))}
+          <AddComment onComment={onComment}></AddComment>
+        </main>
+        <div></div>
+      </div>
+    </UserContext.Provider>
   );
 }
 
