@@ -14,6 +14,7 @@ export function Comment({
   replies,
   increment,
   decrement,
+  onReply,
 }) {
   const [isReplyVisible, setIsReplyVisible] = useState(false);
   const isMobile = useMediaQuery("(max-width: 500px)");
@@ -30,9 +31,20 @@ export function Comment({
         ></Score>
         <User username={user.username} src={user.image.png}></User>
         <div className={styles.text}>{text}</div>
-        <Reply className={styles.reply}></Reply>
+        <Reply
+          onClick={() => setIsReplyVisible(!isReplyVisible)}
+          className={styles.reply}
+        ></Reply>
       </div>
-      {isReplyVisible && <AddComment replyTo={user}></AddComment>}
+      {isReplyVisible && (
+        <AddComment
+          replyTo={user}
+          onComment={(comment) => {
+            onReply({ ...comment, replyingTo: user.username }, id);
+            setIsReplyVisible(false);
+          }}
+        ></AddComment>
+      )}
       {replies?.map((reply) => (
         <Comment
           user={reply.user}
@@ -43,6 +55,7 @@ export function Comment({
           decrement={decrement}
           text={reply.content}
           replies={reply.replies}
+          onReply={onReply}
         ></Comment>
       ))}
     </div>

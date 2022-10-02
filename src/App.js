@@ -21,7 +21,13 @@ function App() {
     setComments([...comments]);
   }
 
-  function onComment(comment) {
+  function onComment(comment, id) {
+    if (comment?.replyingTo) {
+      const parentComment = findComment(comments, id);
+      parentComment.replies.push(comment);
+      setComments([...comments]);
+      return;
+    }
     setComments([...comments, comment]);
   }
 
@@ -40,6 +46,7 @@ function App() {
               decrement={decrement}
               text={comment.content}
               replies={comment.replies}
+              onReply={onComment}
             ></Comment>
           ))}
           <AddComment onComment={onComment}></AddComment>
