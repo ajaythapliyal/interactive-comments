@@ -4,8 +4,10 @@
     display: inline-flex;
 }
 
-.score-action > path:hover{
-    fill: hsl(238, 40%, 52%);
+@media(hover :hover) {
+    .score-action > path:hover{
+        fill: hsl(238, 40%, 52%);
+    } 
 } 
 
 .score{
