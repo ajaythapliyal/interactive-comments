@@ -24,6 +24,7 @@
     grid-column: 2/-1;
     color: hsl(211, 10%, 45%);
     font-family: 'Rubik', sans-serif;
+    word-wrap: break-word;
 }
 
 .score{
