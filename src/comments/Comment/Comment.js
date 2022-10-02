@@ -3,36 +3,54 @@ import Score from "./../Score/Score";
 import Reply from "./../Reply/Reply";
 import User from "./../User/User";
 import useMediaQuery from "../useMediaQuery";
+import AddComment from "../AddComment/AddComment";
 
-export function Comment(props) {
+export function Comment({
+  user,
+  score,
+  id,
+  text,
+  replies,
+  increment,
+  decrement,
+}) {
   const isMobile = useMediaQuery("(max-width: 500px)");
   return (
     <div className={styles["comment-section"]}>
       <div className={styles.bubble}>
         <Score
           className={styles.score}
-          score={props.score}
+          score={score}
           horizontal={isMobile}
-          increment={() => props.increment(props.id)}
-          decrement={() => props.decrement(props.id)}
+          increment={() => increment(id)}
+          decrement={() => decrement(id)}
         ></Score>
-        <User username={props.username} src={props.src}></User>
-        <div className={styles.text}>{props.text}</div>
+        {user}
+        <div className={styles.text}>{text}</div>
         <Reply className={styles.reply}></Reply>
       </div>
-      {props.replies?.map((reply) => (
-        <Comment
-          key={reply.id}
-          id={reply.id}
-          score={reply.score}
-          increment={props.increment}
-          decrement={props.decrement}
-          username={reply.user.username}
-          src={reply.user.image.png}
-          text={reply.content}
-          replies={reply.replies}
-        ></Comment>
-      ))}
+      {replies?.map((reply) => {
+        const user = (
+          <User
+            username={reply.user.username}
+            src={reply.user.image.png}
+          ></User>
+        );
+
+        const onReply = <AddComment></AddComment>;
+        return (
+          <Comment
+            user={user}
+            key={reply.id}
+            id={reply.id}
+            score={reply.score}
+            increment={increment}
+            decrement={decrement}
+            text={reply.content}
+            replies={reply.replies}
+          ></Comment>
+        );
+      })}
     </div>
   );
 }
